@@ -1,58 +1,61 @@
+import 'dart:convert';
+
+import 'package:intl/intl.dart';
+
 import 'meal.dart';
 
 /// A day taken by the user
 class DietaryDay {
+  /// Date to identify the day
+  final String date;
+
   /// List of meals taken in the day
-  final Meal? breakfast;
-  final Meal? lunch;
-  final Meal? dinner;
-  final Meal? snack;
+  final List<Meal> mealList;
 
   /// Constructor
   DietaryDay({
-    this.breakfast,
-    this.lunch,
-    this.dinner,
-    this.snack,
-  });
+    String? date,
+    List<Meal>? mealList,
+  })  : date = date ?? DateFormat('yyyy-MM-dd').format(DateTime.now()),
+        mealList = mealList ?? List<Meal>.empty();
 
   /// Allows updating the entity by returning the updated version
   DietaryDay copyWith({
-    Meal? breakfast,
-    Meal? lunch,
-    Meal? dinner,
-    Meal? snack,
+    String? date,
+    List<Meal>? mealList,
   }) {
     return DietaryDay(
-      breakfast: breakfast ?? this.breakfast,
-      lunch: lunch ?? this.lunch,
-      dinner: dinner ?? this.dinner,
-      snack: snack ?? this.snack,
+      date: date ?? this.date,
+      mealList: mealList ?? this.mealList,
     );
   }
 
   /// Parses the class to JSON format
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'breakfast': breakfast.toString,
-      'lunch': lunch.toString,
-      'dinner': dinner.toString,
-      'snack': snack.toString
+      'date': date,
+      'mealList': jsonEncode(mealList),
     };
   }
 
   /// To parse from JSON format
   factory DietaryDay.fromJson(Map<String, dynamic> json) {
+    var l = jsonDecode(json['mealList'] as String) as Iterable?;
+    var meals = <Meal>[];
+    if (l != null && l.toList().isNotEmpty) {
+      l.toList().forEach((dynamic mealJson) {
+        meals.add(Meal.fromJson(mealJson as Map<String, dynamic>));
+      });
+    }
+
     return DietaryDay(
-      breakfast: Meal.fromJson(json['breakfast']),
-      lunch: Meal.fromJson(json['lunch']),
-      dinner: Meal.fromJson(json['dinner']),
-      snack: Meal.fromJson(json['snack']),
+      date: json['date'],
+      mealList: meals,
     );
   }
 
   @override
   String toString() {
-    return 'DietaryDay { breakfast: ${breakfast.toString()}, lunch: ${lunch.toString()}, dinner: ${dinner.toString()}, snack: ${snack.toString()} }';
+    return 'DietaryDay { date: $date, mealList: ${mealList.toString()} }';
   }
 }
