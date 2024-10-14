@@ -4,21 +4,24 @@ import 'package:meal_tracker/models/meal.dart';
 
 /// Widget showing a meal to select its components
 class MealBottomSheet extends StatelessWidget {
-  /// The Meal on which this Widget is based
+  /// The existing Meal on which this Widget is based
   final Meal meal;
 
-  /// Indicates if we are updating a meal (true) or creating a new one (false)
-  final bool updating;
+  /// Function used to update the DietaryLevel
+  final Function(Meal newMeal) returnNewMeal;
 
   /// Constructor
   const MealBottomSheet({
     super.key,
     required this.meal,
-    this.updating = false,
+    required this.returnNewMeal,
   });
 
   @override
   Widget build(BuildContext context) {
+    var fatLevel = meal.fatLevel;
+    var sugarLevel = meal.sugarLevel;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
@@ -38,10 +41,16 @@ class MealBottomSheet extends StatelessWidget {
         DietaryComponentLevelSelector(
           dietaryComponentTitle: "Fat",
           dietaryComponentLevel: meal.fatLevel,
+          returnNewDietaryLevel: (DietaryComponentLevel newLevel) {
+            fatLevel = newLevel;
+          },
         ),
         DietaryComponentLevelSelector(
           dietaryComponentTitle: "Sugar",
           dietaryComponentLevel: meal.sugarLevel,
+          returnNewDietaryLevel: (DietaryComponentLevel newLevel) {
+            sugarLevel = newLevel;
+          },
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -63,7 +72,15 @@ class MealBottomSheet extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  returnNewMeal(
+                    meal.copyWith(
+                      fatLevel: fatLevel,
+                      sugarLevel: sugarLevel,
+                    ),
+                  );
+                  Navigator.pop(context);
+                },
                 style: ElevatedButton.styleFrom(
                   shape: const CircleBorder(),
                   padding: const EdgeInsets.all(5),

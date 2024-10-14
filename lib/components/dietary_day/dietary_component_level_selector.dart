@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meal_tracker/components/dietary_day/dietary_component.dart';
 import 'package:meal_tracker/models/dietary_component_level.dart';
 
 /// Widget allowing the selection of a DietaryComponentLevel
@@ -10,11 +9,15 @@ class DietaryComponentLevelSelector extends StatefulWidget {
   /// The DietaryComponent on which this Widget is based
   final DietaryComponentLevel dietaryComponentLevel;
 
+  /// Function used to update the DietaryLevel
+  final Function(DietaryComponentLevel newLevel) returnNewDietaryLevel;
+
   /// Constructor
   const DietaryComponentLevelSelector({
     super.key,
     required this.dietaryComponentLevel,
     required this.dietaryComponentTitle,
+    required this.returnNewDietaryLevel,
   });
 
   @override
@@ -51,11 +54,13 @@ class _DietaryComponentLevelSelectorState
         SegmentedButton<DietaryComponentLevel>(
           multiSelectionEnabled: false,
           emptySelectionAllowed: false,
-          showSelectedIcon: false,expandedInsets: EdgeInsets.all(10),
+          showSelectedIcon: false,
+          expandedInsets: const EdgeInsets.all(10),
           selected: _segmentedButtonSelection,
           onSelectionChanged: (Set<DietaryComponentLevel> newSelection) {
             setState(() {
               _segmentedButtonSelection = newSelection;
+              widget.returnNewDietaryLevel(newSelection.first);
             });
           },
           segments: [

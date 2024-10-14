@@ -17,7 +17,7 @@ class DietaryDay {
     String? date,
     List<Meal>? mealList,
   })  : date = date ?? DateFormat('yyyy-MM-dd').format(DateTime.now()),
-        mealList = mealList ?? List<Meal>.empty();
+        mealList = mealList ?? List<Meal>.empty(growable: true);
 
   /// Allows updating the entity by returning the updated version
   DietaryDay copyWith({

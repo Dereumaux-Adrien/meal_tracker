@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meal_tracker/blocs/dietary_day/dietary_day_cubit.dart';
 import 'package:meal_tracker/components/dietary_day/meal_bottom_sheet.dart';
 import 'package:meal_tracker/models/meal.dart';
-import 'package:meal_tracker/models/meal_type.dart';
 
 /// Widget offering to create a new Meal for the day
 class MealAddingCard extends StatelessWidget {
@@ -16,6 +17,7 @@ class MealAddingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dietaryCubit = BlocProvider.of<DietaryDayCubit>(context);
     return Container(
       constraints: const BoxConstraints(
         minHeight: 0,
@@ -34,6 +36,7 @@ class MealAddingCard extends StatelessWidget {
               builder: (BuildContext context) {
                 return MealBottomSheet(
                   meal: Meal(mealType: mealType),
+                  returnNewMeal: (newMeal) => dietaryCubit.addMeal(newMeal),
                 );
               },
             );
