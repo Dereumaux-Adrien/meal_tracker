@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meal_tracker/blocs/dietary_day/dietary_day_cubit.dart';
 import 'package:meal_tracker/components/dietary_day/meal_taken_list.dart';
 import 'package:meal_tracker/components/dietary_day/meal_types_offering.dart';
-import 'package:meal_tracker/models/meal.dart';
 
 /// Screen displaying the Nutrition, would rename it to Daily Diet if we get one
 /// like this for each day
@@ -43,6 +42,42 @@ class DietaryDayScreen extends StatelessWidget {
                   }
                 },
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextButton(
+                    onPressed: () {
+                      dietaryDayCubit.loadDietaryDay();
+                    },
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(5),
+                      backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                      side: BorderSide(
+                        color: Theme.of(context).colorScheme.primary,
+                        width: 1,
+                      ),
+                    ),
+                    child: const Text('Cancel'),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextButton(
+                    onPressed: () {
+                      dietaryDayCubit.saveDietaryDay();
+                    },
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(5),
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                    child: const Text('Save'),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
