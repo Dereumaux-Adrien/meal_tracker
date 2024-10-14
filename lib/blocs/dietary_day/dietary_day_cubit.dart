@@ -10,6 +10,7 @@ class DietaryDayCubit extends Cubit<DietaryDayState> {
   DietaryDayCubit() : super(DietaryDayLoading());
 
   void loadDietaryDay() {
+    emit(DietaryDayLoading());
     final date = DateFormat('yyyy-MM-dd').format(DateTime.now());
     final dietaryDay =
         HiveStorage().getDietaryDay(date: date) ?? DietaryDay(date: date);
