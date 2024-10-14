@@ -57,18 +57,22 @@ class MealBottomSheet extends StatelessWidget {
                   backgroundColor: Theme.of(context).colorScheme.onPrimary,
                   foregroundColor: Theme.of(context).colorScheme.primary,
                 ),
-                child: Icon(Icons.close,
-                    color: Theme.of(context).colorScheme.primary),
+                child: Icon(
+                  Icons.close,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
               ElevatedButton(
                 onPressed: () {},
-                child: Icon(Icons.check,
-                    color: Theme.of(context).colorScheme.onPrimary),
                 style: ElevatedButton.styleFrom(
                   shape: const CircleBorder(),
                   padding: const EdgeInsets.all(5),
                   backgroundColor: Theme.of(context).colorScheme.primary,
                   foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                ),
+                child: Icon(
+                  Icons.check,
+                  color: Theme.of(context).colorScheme.onPrimary,
                 ),
               ),
             ],
