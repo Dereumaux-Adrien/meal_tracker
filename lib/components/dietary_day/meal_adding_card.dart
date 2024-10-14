@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meal_tracker/components/dietary_day/meal_bottom_sheet.dart';
+import 'package:meal_tracker/models/meal.dart';
 import 'package:meal_tracker/models/meal_type.dart';
 
 /// Widget offering to create a new Meal for the day
@@ -27,12 +29,14 @@ class MealAddingCard extends StatelessWidget {
         ),
         child: ListTile(
           onTap: () {
-            // Todo: Add a new meal of this type
-            // Navigator.pushNamed(
-            //   context,
-            //   MarkerDataEditorScreen.route,
-            //   arguments: markerData,
-            // );
+            showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return MealBottomSheet(
+                  meal: Meal(mealType: mealType),
+                );
+              },
+            );
           },
           title: Container(
             width: MediaQuery.of(context).size.width,
