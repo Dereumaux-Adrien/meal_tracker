@@ -15,21 +15,22 @@ class HiveStorage {
   }
 
   /// Hive Box where we store our Dietary Days
-  final Box<DietaryDay> dietaryDayBox =
-      Hive.box<DietaryDay>(name: "DietaryDayBox");
+  final Box<Map<String, dynamic>> dietaryDayBox =
+      Hive.box<Map<String, dynamic>>(name: "DietaryDayBox");
 
   /// Adds the DietaryDay to the box
   void setDietaryDay({
     required DietaryDay dietaryDay,
   }) {
-    dietaryDayBox.put(dietaryDay.date, dietaryDay);
+    dietaryDayBox[dietaryDay.date] = dietaryDay.toJson();
   }
 
-  /// Gets the DietaryDay
+  /// Gets the DietaryDay associated with the date given
   DietaryDay? getDietaryDay({
     /// Date at the format 'yyyy-MM-dd'
     required String date,
   }) {
-    return dietaryDayBox.get(date);
+    final result = dietaryDayBox[date];
+    return result != null ? DietaryDay.fromJson(result) : null;
   }
 }

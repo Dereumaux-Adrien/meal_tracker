@@ -27,7 +27,7 @@ class DietaryDayScreen extends StatelessWidget {
         body: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            MealTypesOffering(),
+            const MealTypesOffering(),
             Expanded(
               child: BlocBuilder<DietaryDayCubit, DietaryDayState>(
                 builder: (context, state) {
