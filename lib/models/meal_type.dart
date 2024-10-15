@@ -15,7 +15,7 @@ enum MealType {
 
 /// Extension used to translate MealType to strings to simplify the database
 extension MealTypeToString on MealType? {
-  /// Gets the string from the MarkerColors, used to save in database
+  /// Gets the string
   String get string {
     switch (this) {
       case MealType.breakfast:

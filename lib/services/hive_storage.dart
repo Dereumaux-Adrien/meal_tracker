@@ -18,7 +18,7 @@ class HiveStorage {
   final Box<Map<String, dynamic>> dietaryDayBox =
       Hive.box<Map<String, dynamic>>(name: "DietaryDayBox");
 
-  /// Adds the DietaryDay to the box
+  /// Sets the DietaryDay in the box, can be used for adding and update
   void setDietaryDay({
     required DietaryDay dietaryDay,
   }) {

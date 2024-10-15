@@ -23,11 +23,6 @@ class MealCard extends StatelessWidget {
       child: ListTile(
         onTap: () {
           // Todo: edit this meal
-          // Navigator.pushNamed(
-          //   context,
-          //   MarkerDataEditorScreen.route,
-          //   arguments: markerData,
-          // );
         },
         title: Container(
           width: MediaQuery.of(context).size.width,

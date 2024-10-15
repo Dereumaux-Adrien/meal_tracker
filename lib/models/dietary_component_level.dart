@@ -12,7 +12,7 @@ enum DietaryComponentLevel {
 
 /// Extension used to translate DietaryComponentLevel to strings to simplify the database
 extension DietaryComponentLevelToString on DietaryComponentLevel? {
-  /// Gets the string from the MarkerColors, used to save in database
+  /// Gets the string
   String get string {
     switch (this) {
       case DietaryComponentLevel.low:
