@@ -17,7 +17,7 @@ class DietaryDayCubit extends Cubit<DietaryDayState> {
     emit(DietaryDayLoaded(dietaryDay: dietaryDay));
   }
 
-  void addMeal(Meal meal) {
+  void addMeal({required Meal meal}) {
     var _state = state;
     if (_state is DietaryDayLoaded) {
       final newMealList = _state.dietaryDay.mealList..add(meal);
@@ -26,13 +26,11 @@ class DietaryDayCubit extends Cubit<DietaryDayState> {
     }
   }
 
-  void updateMeal(int listId, Meal meal) {
+  void updateMeal({required int listId, required Meal meal}) {
     var _state = state;
     if (_state is DietaryDayLoaded) {
-      final newMealList = _state.dietaryDay.mealList;
-      newMealList[listId] = meal;
-      final newDietaryDay = _state.dietaryDay.copyWith(mealList: newMealList);
-      emit(DietaryDayLoaded(dietaryDay: newDietaryDay));
+      _state.dietaryDay.mealList.replaceRange(listId, listId + 1, [meal]);
+      emit(DietaryDayLoaded(dietaryDay: _state.dietaryDay));
     }
   }
 

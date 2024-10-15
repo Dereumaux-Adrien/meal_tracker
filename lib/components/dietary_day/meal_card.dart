@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meal_tracker/blocs/dietary_day/dietary_day_cubit.dart';
 import 'package:meal_tracker/models/meal.dart';
 
 import 'dietary_component.dart';
+import 'meal_bottom_sheet.dart';
 
 /// Widget oShowing an already created meal
 class MealCard extends StatelessWidget {
+  /// The id that the meal is saved at in the list
+  final int listId;
+
   /// The Meal on which this Widget is based
   final Meal meal;
 
@@ -12,17 +18,28 @@ class MealCard extends StatelessWidget {
   const MealCard({
     super.key,
     required this.meal,
+    required this.listId,
   });
 
   @override
   Widget build(BuildContext context) {
+    final dietaryCubit = BlocProvider.of<DietaryDayCubit>(context);
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
       child: ListTile(
         onTap: () {
-          // Todo: edit this meal
+          showModalBottomSheet<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return MealBottomSheet(
+                meal: meal,
+                returnNewMeal: (newMeal) =>
+                    dietaryCubit.updateMeal(listId: listId, meal: newMeal),
+              );
+            },
+          );
         },
         title: Container(
           width: MediaQuery.of(context).size.width,

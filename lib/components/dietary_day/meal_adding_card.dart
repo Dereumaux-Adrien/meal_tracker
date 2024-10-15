@@ -36,7 +36,8 @@ class MealAddingCard extends StatelessWidget {
               builder: (BuildContext context) {
                 return MealBottomSheet(
                   meal: Meal(mealType: mealType),
-                  returnNewMeal: (newMeal) => dietaryCubit.addMeal(newMeal),
+                  returnNewMeal: (newMeal) =>
+                      dietaryCubit.addMeal(meal: newMeal),
                 );
               },
             );

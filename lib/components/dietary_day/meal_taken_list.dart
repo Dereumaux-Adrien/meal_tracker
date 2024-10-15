@@ -6,16 +6,20 @@ import 'package:meal_tracker/models/meal.dart';
 class MealTakenList extends StatelessWidget {
   final List<Meal> mealTakenList;
 
-  const MealTakenList({super.key, required this.mealTakenList});
+  const MealTakenList({
+    super.key,
+    required this.mealTakenList,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: mealTakenList.length,
       itemBuilder: (context, index) {
-        final mealTaken = mealTakenList[index];
-
-        return MealCard(meal: mealTaken);
+        return MealCard(
+          listId: index,
+          meal: mealTakenList[index],
+        );
       },
     );
   }
