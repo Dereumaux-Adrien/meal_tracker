@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meal_tracker/blocs/dietary_day/dietary_day_cubit.dart';
-import 'package:meal_tracker/components/dietary_day/meal_bottom_sheet.dart';
+import 'package:meal_tracker/components/dietary_day_drawer/meal_bottom_sheet.dart';
 import 'package:meal_tracker/models/meal.dart';
 
 /// Widget offering to create a new Meal for the day

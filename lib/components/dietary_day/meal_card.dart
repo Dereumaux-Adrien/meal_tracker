@@ -4,7 +4,7 @@ import 'package:meal_tracker/blocs/dietary_day/dietary_day_cubit.dart';
 import 'package:meal_tracker/models/meal.dart';
 
 import 'dietary_component.dart';
-import 'meal_bottom_sheet.dart';
+import '../dietary_day_drawer/meal_bottom_sheet.dart';
 
 /// Widget oShowing an already created meal
 class MealCard extends StatelessWidget {

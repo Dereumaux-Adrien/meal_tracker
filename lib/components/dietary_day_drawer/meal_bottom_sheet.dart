@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meal_tracker/components/dietary_day/dietary_component_level_selector.dart';
 import 'package:meal_tracker/models/meal.dart';
+
+import 'dietary_component_level_selector.dart';
 
 /// Widget showing a meal to select its components
 class MealBottomSheet extends StatelessWidget {
