@@ -25,7 +25,7 @@ This app has been developed with with the Android Toolbox, please feel free to c
 The app allows to keep track of the meals taken during a day.
 
 The main screen of the app is the nutrition screen.
-![img.png](images_README/img_main_screen.png)
+<img src="images_README/img_main_screen.png" alt="img_main_screen" width="200"/>
 From top to bottom, the nutrition screen contains:
 - Four buttons that allow the user to start the creation of a new meal of the selected type, opens a bottom drawer to offer details options.
 - A list of the already created meals, starts empty, then will contain the meals with their details and allow for their update by also opening the bottom drawer.
@@ -34,7 +34,7 @@ From top to bottom, the nutrition screen contains:
   - A save button that allows to save the existing changes into the database.
 
 The bottom drawer (also called bottom sheet)
-![img.png](images_README/img_drawer.png)
+<img src="images_README/img_drawer.png" alt="img_drawer" width="200"/>
 From top to bottom, it contains:
 - The name of the selected type of meal.
 - A selector for which level of fat the meal contained.
