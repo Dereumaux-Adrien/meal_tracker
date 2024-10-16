@@ -25,16 +25,20 @@ class DietaryComponent extends StatelessWidget {
           dietaryComponentTitle,
           style: Theme.of(context).textTheme.bodyMedium,
         ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: Theme.of(context).colorScheme.primary,
-          ),
-          child: Text(
-            dietaryComponentLevel.string,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(3, 8, 8, 8),
+          child: Container(
+            padding: const EdgeInsets.all(3),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            child: Text(
+              dietaryComponentLevel.string,
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
+            ),
           ),
         ),
       ],
