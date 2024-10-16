@@ -27,11 +27,18 @@ class DietaryComponentLevelSelector extends StatefulWidget {
 
 class _DietaryComponentLevelSelectorState
     extends State<DietaryComponentLevelSelector> {
-  Set<DietaryComponentLevel> _segmentedButtonSelection =
-      <DietaryComponentLevel>{DietaryComponentLevel.low};
+  late Set<DietaryComponentLevel> _segmentedButtonSelection;
+
+  bool initialised = false;
 
   @override
   Widget build(BuildContext context) {
+    if (!initialised) {
+      _segmentedButtonSelection = <DietaryComponentLevel>{
+        widget.dietaryComponentLevel
+      };
+      initialised = true;
+    }
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
