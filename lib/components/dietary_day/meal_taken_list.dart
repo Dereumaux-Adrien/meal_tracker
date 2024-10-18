@@ -4,8 +4,10 @@ import 'package:meal_tracker/models/meal.dart';
 
 /// Widget containing our list of meals that were added by the user
 class MealTakenList extends StatelessWidget {
+  /// List of meals to be displayed
   final List<Meal> mealTakenList;
 
+  /// Constructor
   const MealTakenList({
     super.key,
     required this.mealTakenList,

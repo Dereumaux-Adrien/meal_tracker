@@ -27,8 +27,12 @@ class DietaryComponentLevelSelector extends StatefulWidget {
 
 class _DietaryComponentLevelSelectorState
     extends State<DietaryComponentLevelSelector> {
+  /// The existing value of the DietaryComponentLevel we want to set at the init
   late Set<DietaryComponentLevel> _segmentedButtonSelection;
 
+  /// Variable to check if the initialisation has been done.
+  /// Without it, the init will be done each time the selection change,
+  /// effectively blocking it in the initial state
   bool initialised = false;
 
   @override

@@ -5,6 +5,7 @@ import 'meal_adding_card.dart';
 
 /// Widget containing our existing list of meal types that can be added
 class MealTypesOffering extends StatelessWidget {
+  /// Constructor
   const MealTypesOffering({super.key});
 
   @override

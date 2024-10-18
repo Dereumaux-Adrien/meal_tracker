@@ -9,6 +9,7 @@ part 'dietary_day_state.dart';
 class DietaryDayCubit extends Cubit<DietaryDayState> {
   DietaryDayCubit() : super(DietaryDayLoading());
 
+  /// Starts the loading of the existing saved DietaryDay
   void loadDietaryDay() {
     emit(DietaryDayLoading());
     final date = DateFormat('yyyy-MM-dd').format(DateTime.now());
@@ -17,6 +18,7 @@ class DietaryDayCubit extends Cubit<DietaryDayState> {
     emit(DietaryDayLoaded(dietaryDay: dietaryDay));
   }
 
+  /// Adds a meal to the DietaryDay
   void addMeal({required Meal meal}) {
     var _state = state;
     if (_state is DietaryDayLoaded) {
@@ -26,6 +28,7 @@ class DietaryDayCubit extends Cubit<DietaryDayState> {
     }
   }
 
+  /// Updates a Meal in the DietaryDay
   void updateMeal({required int listId, required Meal meal}) {
     var _state = state;
     if (_state is DietaryDayLoaded) {
@@ -34,6 +37,8 @@ class DietaryDayCubit extends Cubit<DietaryDayState> {
     }
   }
 
+  /// Saves the DietaryDietaryDay to the database
+  /// Until this is done, reloading will reset the changes
   void saveDietaryDay() {
     var _state = state;
     if (_state is DietaryDayLoaded) {
